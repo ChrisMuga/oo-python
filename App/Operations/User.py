@@ -30,10 +30,10 @@ class User:
         cls.print_names(data)
 
     @staticmethod
-    def parse_and_display(item):
+    def parse_and_display(name, email):
         # obtain item and print upper case result
-        print(item.upper())
+        print(f"{name.upper()} - {email.lower()}")
 
     @classmethod
     def print_names(cls, data):
-        list(map(lambda x: cls.parse_and_display(x.get("name")), data))
+        list(map(lambda x: cls.parse_and_display(x.get("name"), x.get("email")), data))
