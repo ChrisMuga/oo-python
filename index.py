@@ -8,4 +8,5 @@ app_name = os.getenv("APP_NAME")
 Operations.info(name="Tom Mboya")
 
 user = User(name="Chris Muga", age=25)
-user.fetch()
+users = user.fetch()
+user.print_names(users)

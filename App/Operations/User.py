@@ -24,10 +24,7 @@ class User:
         print("status code:", response.status_code)
         # data/content
         data = json.loads(response.content)
-        # print(json.loads(response.content))
-
-        # print items from list
-        cls.print_names(data)
+        return data
 
     @staticmethod
     def parse_and_display(name, email):
