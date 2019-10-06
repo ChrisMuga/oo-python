@@ -6,7 +6,7 @@ import json
 load_dotenv()
 
 # fetch .env variables
-url = os.getenv("USERS_API_ENPOINT")
+url = os.getenv("USERS_API_ENDPOINT")
 
 
 class User:
@@ -21,13 +21,19 @@ class User:
     def fetch(cls):
         response = requests.get(url)
         # status code
-        print(response.status_code)
+        print("status code:", response.status_code)
         # data/content
-        print(json.loads(response.content))
+        data = json.loads(response.content)
+        # print(json.loads(response.content))
 
-        list(map(lambda x: cls.parse_and_display(x.get("name")), json.loads(response.content)))
+        # print items from list
+        cls.print_names(data)
 
     @staticmethod
     def parse_and_display(item):
         # obtain item and print upper case result
         print(item.upper())
+
+    @classmethod
+    def print_names(cls, data):
+        list(map(lambda x: cls.parse_and_display(x.get("name")), data))
